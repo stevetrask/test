@@ -3,6 +3,8 @@ name: Auto Assign Issues to Project(s)
 on:
   issues:
     types: [opened, labeled]
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
 jobs:
   assign_one_project:
