@@ -15,5 +15,5 @@ jobs:
       uses: srggrs/assign-one-project-github-action@1.2.1
       if: ${{ github.event.label.name == 'general member' || 'premier member' }}
       with:
-        project: 'https://github.com/finopsfoundation/framework/projects/1'
+        project: 'https://github.com/stevetrask/test/projects/1'
         column_name: 'Backlog'
