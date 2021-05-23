@@ -13,7 +13,7 @@ jobs:
     steps:
     - name: Assign vendor issues to the Vendor project
       uses: srggrs/assign-one-project-github-action@1.2.1
-      if: ${{ github.event.label.name == 'general member' || 'premier member' }}
+      if: contains(github.event.issue.labels.*.name, 'general member')
       with:
         project: 'https://github.com/stevetrask/test/projects/1'
         column_name: 'Backlog'
