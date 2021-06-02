@@ -18,6 +18,11 @@ exports.handler = (event, context, callback) => {
 	  if (err) {
 	    console.error(err);
 	    callback(err);
+	  } else {
+	  	callback(null, {
+		    statusCode: 200,
+		    body: 'Sucess for a better search!',
+		  });
 	  }
 	});
 };
