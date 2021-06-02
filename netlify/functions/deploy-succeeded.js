@@ -4,8 +4,7 @@ const { ALGOLIA_KEY } = process.env;
 
 const contentJSON = [
   {
-    objectID: 1,
-    name: "Foo"
+    "name": "Foo"
   }
 ];
 
