@@ -16,6 +16,7 @@ exports.handler = (event, context, callback) => {
 
 	var contentJSON = [
 	  {
+	  	"objectID": "1",
 	    "name": "Foo"
 	  }
 	];
