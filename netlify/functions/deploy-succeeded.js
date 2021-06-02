@@ -14,7 +14,13 @@ exports.handler = (event, context, callback) => {
 	var index = client.initIndex('dev_f2');
 	// var contentJSON = require('../../assets/content.json');
 
-	index.addObjects(contentJSON, function(err, content) {
+	var contentJSON = [
+	  {
+	    "name": "Foo"
+	  }
+	];
+
+	index.saveObjects(contentJSON, function(err, content) {
 	  if (err) {
 	    console.error(err);
 	    callback(err);
