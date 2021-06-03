@@ -20,19 +20,19 @@ exports.handler = (event, context, callback) => {
 	//     "name": "Foo"
 	//   }
 	// ];
-	
+
 	index.clearObjects().then(() => {
   // clear done
-	});
-	index.saveObjects(contentJSON, function(err, content) {
-	  if (err) {
-	    console.error(err);
-	    callback(err);
-	  } else {
-	  	callback(null, {
-		    statusCode: 200,
-		    body: 'Sucess for a better search!',
-		  });
-	  }
+	  index.saveObjects(contentJSON, function(err, content) {
+		  if (err) {
+		    console.error(err);
+		    callback(err);
+		  } else {
+		  	callback(null, {
+			    statusCode: 200,
+			    body: 'Sucess for a better search!',
+			  });
+		  }
+		});
 	});
 };
