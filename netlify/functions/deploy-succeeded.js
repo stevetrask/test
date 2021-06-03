@@ -12,7 +12,7 @@ exports.handler = (event, context, callback) => {
   // Here we'll use Algolia to get upload
   var client = algoliasearch('LY61NP6ZYV', ALGOLIA_KEY);
 	var index = client.initIndex('dev_f2');
-	var contentJSON = require('https://flamboyant-jang-8331c9.netlify.app/assets/content.json');
+	var contentJSON = require('../../_site/assets/content.json');
 
 	// var contentJSON = [
 	//   {
