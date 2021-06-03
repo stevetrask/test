@@ -20,7 +20,10 @@ exports.handler = (event, context, callback) => {
 	//     "name": "Foo"
 	//   }
 	// ];
-
+	
+	index.clearObjects().then(() => {
+  // clear done
+	});
 	index.saveObjects(contentJSON, function(err, content) {
 	  if (err) {
 	    console.error(err);
