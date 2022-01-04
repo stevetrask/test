@@ -12,7 +12,7 @@ exports.handler = (event, context, callback) => {
   // Here we'll use Algolia to get upload
   var client = algoliasearch('64LMXTN0XN', ALGOLIA_KEY);
 	var index = client.initIndex('dev_site-content');
-	var contentJSON = require('../../_site/assets/content.json');
+	var contentJSON = require('../../_site/json/site-content.json');
 
 	// var contentJSON = [
 	//   {
