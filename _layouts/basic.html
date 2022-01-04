@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+  {% include head.html %}
+  <body>
+
+    {% include header.html %}
+
+    <nav id="off-canvas" class="md:hidden">
+      <ul>
+        {% for item in site.data.navigation_side %}
+        <li>{{ item.name }}
+          {% if item.children != null %}
+          <ul>
+            {% for child in item.children %}
+              {% if child.url == undefined %}
+                <li>
+                  <a href="/{{ item.name | downcase }}/{{ child.name | replace: ' ', '-' | downcase }}">{{ child.name }}</a>
+                </li>
+                {% else %}
+                <li>
+                  <a href="{{ child.url }}">{{ child.name }}</a>
+                </li>
+              {% endif %}
+            {% endfor %}
+           </ul>
+          {% endif %}
+        </li>
+        {% endfor %}
+
+        <!-- {% for item in site.data.navigation_footer %}
+        <li>{{ item.name }}
+          {% if item.children != null %}
+          <ul>
+            {% for child in item.children %}
+            <li>
+              <a href="/{{ item.name | downcase }}/{{ child.name | replace: ' ', '-' | downcase }}">{{ child.name }}</a>
+            </li>
+            {% endfor %}
+           </ul>
+          {% endif %}
+        </li>
+        {% endfor %} -->
+      </ul>
+    </nav>
+
+    {{ content }}    
+
+    {% include footer.html %}
+
+    <div id="overlay" class="gl-overlay"></div>
+
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="/js/vendor/hc-offcanvas-nav.js"></script>
+    <script src="/js/vendor/mixitup.min.js?{{ site.time | date: '%s%N' }}"></script>
+    <script src="/js/vendor/mixitup-multifilter.min.js"></script>
+
+    <script src="/js/partials/modal.js?{{ site.time | date: '%s%N' }}"></script>
+
+    <script src="/js/partials/main.js?{{ site.time | date: '%s%N' }}"></script>
+
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
+
+
+
+    {% if jekyll.environment == 'production' %}
+      {% include analytics.html %}
+    {% endif %}
+  </body>
+</html>

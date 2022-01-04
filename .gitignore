@@ -1,4 +1,10 @@
 _site
+.DS_STORE
 .sass-cache
 .jekyll-metadata
-node_modules/
+.jekyll-cache
+node_modules
+yarn.lock
+Gemfile.lock
+.bundle/
+package-lock.json

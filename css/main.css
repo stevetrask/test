@@ -1,16 +1,55 @@
 ---
+search: false
 ---
+/* Front matter is necessary for Jekyll */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 /* Write your styles below this line. */
 
-@import "partials/vendor/hc-offcanvas-nav_carbon";
-@import "partials/base/variables";
-@import "partials/base/global";
-@import "partials/base/typography";
-@import "partials/base/forms";
-@import "partials/components/modals";
-@import "extra";
+@import "css/partials/vendor/hc-offcanvas-nav_carbon";
+@import "css/partials/base/variables";
+@import "css/partials/base/global";
+@import "css/partials/base/typography";
+@import "css/partials/base/forms";
+@import "css/partials/components/modals";
+@import "css/extra";
+
+@layer base {
+  .btn {
+    @apply inline-flex justify-center py-2 px-4 border shadow-sm text-sm font-medium rounded-sm text-white bg-green-500 font-normal no-underline
+  }
+
+  .btn-outline {
+    @apply inline-flex justify-center py-2 px-4 border shadow-sm text-sm font-medium rounded-sm text-green-500 bg-white border border-green-500 font-normal no-underline
+  }
+
+  .badge-grey {
+    @apply bg-gray-200 rounded-lg text-sm font-semibold text-gray-700 tracking-wider uppercase inline-block px-2 py-px no-underline; 
+  }
+
+  .badge-grey:hover {
+    @apply bg-gray-400
+  }
+
+  .badge-dgrey {
+    @apply bg-gray-300 rounded-lg text-sm font-medium text-gray-700 tracking-wide uppercase inline-block px-2 py-px no-underline my-2 mr-4;
+  }
+  
+  .badge-dgrey:hover, .mixitup-control-active {
+    @apply bg-green-500 text-white transition transform duration-100 cursor-pointer;
+  }
+
+  .badge-dgrey svg {
+    @apply text-gray-500; 
+  }
 
 
-
-
+  h1, h2, h3, h4 {
+    @apply text-gray-800
+  }
+  h1 {
+    @apply tracking-tight;
+  }
+}

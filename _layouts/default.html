@@ -1,0 +1,107 @@
+---
+
+layout: basic
+
+---
+
+<div class="flex flex-wrap flex-row md:flex-nowrap px-4 max-w-screen-xl mx-auto sm:px-6 mt-12"><!-- Main container -->
+  <div class="hidden md:block w-3/12"><!-- Sidebar Nav -->
+    {% include nav.html %}
+    
+    <div class="bg-gray-200 rounded-lg px-6 pb-6 pt-2 mr-6">
+      <span class="text-gray-400 inline-block mb-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mt-2" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
+        </svg>
+      </span>
+      <h3 class="text-sm font-semibold text-gray-700 tracking-wider uppercase m-0">Ready to Get FinOps Certified?</h3>
+      <a href="https://learn.finops.org/" class="text-sm text-green-500 mt-4 block" data-ga-category="links" data-ga-action="internal link clicks" data-ga-label="certification - left nav promo">Learn More</a>
+    </div>
+  </div>
+
+
+  <div class="px-4 w-full md:w-7/12">
+    {% if page.identifier == 'framework' or page.identifier == 'projects' %}
+    <div class="text-right text-sm no-underline text-gray-900 mb-6">
+      <a href="javascript:void(0);" class="rounded-md hover:bg-gray-200 py-2 px-4 opacity-50 hover:opacity-100 transition duration-200 ease-in-out" onclick="modalToggle('modal-contribute')">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg> Make Suggestion
+      </a>
+    </div>
+
+      {% assign url = page.url %}
+      {% assign size = url | size | minus: 1 %}
+
+      <!-- https://github.com/finopsfoundation/framework/blob/master{{ url | slice: 0, size | append: '.md' }} -->
+    
+    {% endif %}
+    <div class="max-w-prose">
+      {% if page.identifier == 'framework' or page.identifier == 'projects' %}
+        <div class="relative">
+          <script>
+            var comm_img_number = Math.floor(Math.random() * 4) + 1;
+            document.write( '<img src="/img/community/page-decor-' + comm_img_number + '.svg" class="absolute right-img h-32">');
+          </script>
+          
+        </div>
+      {% elsif page.identifier == 'resources' or page.identifier == 'certification' %}
+        <div class="relative">
+          <script>
+            var corp_img_number = Math.floor(Math.random() * 2) + 1;
+            document.write( '<img src="/img/corp/page-decor-' + corp_img_number + '.svg" class="absolute right-img h-32">');
+          </script>
+        </div>
+      {% endif %}
+      {{ content }}
+    </div>
+  </div>
+
+  {% if page.collection == 'tools-services' %}
+
+    {% if page.temporary == undefined %}
+      <div class="w-full px-4 mt-8 md:px-0 md:mt-0 md:w-2/12">
+        <div class="text-right text-sm no-underline text-gray-900 mb-6">
+          <a href="javascript:void(0);" class="rounded-md hover:bg-gray-200 py-2 px-4 opacity-50 hover:opacity-100 transition duration-200 ease-in-out" onclick="modalToggle('modal-contribute')">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg> Make Suggestion
+          </a>
+        </div>
+        <div class="p-4 bg-gray-100 rounded-md mb-6 shadow-md">
+          <h1 class="text-base font-semibold text-gray-700 tracking-wider uppercase mb-2">{{ page.name }}</h1>
+          <ul class="plain-list">
+            {% for type in page.type %}
+            <li class="text-sm">{{ type }}</li>
+            {% endfor %}
+          </ul>
+          <ul class="plain-list">
+            <li class="text-sm"><span class="font-semibold">Joined:</span> {{ page.date | date: "%B %Y" }}</li>
+            {% if page.clouds-supported != undefined %}
+              <li class="text-sm"><span class="font-semibold">Supports:</span> 
+              {% for cloud in page.clouds-supported %} 
+                {% if forloop.last %}
+                  {{ cloud }}
+                {% else %}
+                  {{ cloud }},
+                {% endif %}
+              {% endfor %}</li>
+            {% endif %}
+            {% if page.number-of-focp != undefined %}
+              <li class="text-sm"><span class="font-semibold">Certified FinOps Practitioners:</span> {{ page.number-of-focp }}</li>
+            {% endif %}
+            {% if page.slack.url != undefined %}
+              <li class="text-sm"><span class="font-semibold">Slack channel:</span> <a href="{{ page.slack.url }}" class="hover:text-green-500">{{ page.slack.title }}</a></li>
+            {% endif %}
+          </ul>
+        </div>
+        <div class="text-center">
+          {% if page.website-url != undefined %}
+            <a href="{{ page.website-url  }}" class="btn" data-ga-category="vendor" data-ga-action="internal link clicks" data-ga-label="{{ page.name }} - vendor website">Visit website</a>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+  {% endif %}
+
+</div>
+
+<!-- Modals -->
+
+{% include modals/contribute.html %}
