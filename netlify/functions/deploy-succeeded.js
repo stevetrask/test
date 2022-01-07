@@ -39,5 +39,19 @@ exports.handler = (event, context, callback) => {
 		  }
 		});
 	});
-	
+		// Capabilities
+	index_capabilities.clearObjects().then(() => {
+  // clear done
+	  index_capabilities.saveObjects(contentJSON_capabilities, function(err, content) {
+		  if (err) {
+		    console.error(err);
+		    callback(err);
+		  } else {
+		  	callback(null, {
+			    statusCode: 200,
+			    body: 'Sucess for a better search!',
+			  });
+		  }
+		});
+	});
 };
