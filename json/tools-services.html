@@ -5,7 +5,6 @@ sitemap: false
 ---
 {% assign list_pages = "" %}
 {% for item in site.tools-services %}
-  gdgd
     {% assign capability-titles = "" | split: ',' %}
     {% for capability in site.capabilities %}
       {% if item.capabilities contains capability.page-identifier %}
